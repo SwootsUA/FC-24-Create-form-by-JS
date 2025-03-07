@@ -88,14 +88,14 @@ const radio_input1 = document.createElement('input');
 radio_input1.type = 'radio';
 radio_input1.id = 'buyer';
 radio_input1.value = 'buyer';
-radio_input1.name = 'buyer-or-seller-selector';
+radio_input1.name = 'user-type';
 radio_input1.required = true;
 
 const radio_input2 = document.createElement('input');
 radio_input2.type = 'radio';
 radio_input2.id = 'seller';
 radio_input2.value = 'seller';
-radio_input2.name = 'buyer-or-seller-selector';
+radio_input2.name = 'user-type';
 radio_input2.required = true;
 
 const radio_label1 = document.createElement('label');
@@ -127,6 +127,7 @@ checkbox_input_group.classList.add('checkbox-input-group');
 const allow_marketing = document.createElement('input');
 allow_marketing.type = 'checkbox';
 allow_marketing.id = 'allow-marketing';
+allow_marketing.name = 'allow-marketing';
 
 const allow_marketing_label = document.createElement('label');
 allow_marketing_label.setAttribute('for', 'allow-marketing');
