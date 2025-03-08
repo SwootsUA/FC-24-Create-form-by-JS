@@ -1,17 +1,5 @@
 'use strict';
 
-function createElement(
-    tag,
-    {classes = [], attributes = {}, properties = {}, textContent = ''} = {}
-) {
-    const el = document.createElement(tag);
-    if (classes.length) el.classList.add(...classes);
-    Object.keys(attributes).forEach(a => el.setAttribute(a, attributes[a]));
-    Object.assign(el, properties);
-    if (textContent) el.textContent = textContent;
-    return el;
-}
-
 const text = {
     header: 'Create an account',
     header_addition: 'We always keep your name and email address private.',
@@ -34,66 +22,50 @@ const text = {
 
 const container = document.querySelector('.container');
 
-const form = createElement('form');
+const form = document.createElement('form');
 
-const header_container = createElement('div', {classes: ['heading-container']});
+const header_container = document.createElement('div');
+header_container.classList.add('heading-container');
 
-const header = createElement('h1', {textContent: text.header});
-const header_addition = createElement('p', {textContent: text.header_addition});
+const header = document.createElement('h1');
+header.textContent = text.header;
+const header_addition = document.createElement('p');
+header_addition.textContent = text.header_addition;
 
 header_container.append(header, header_addition);
 
-const text_inputs_container = createElement('div', {
-    classes: ['text-inputs-container'],
-});
+const text_inputs_container = document.createElement('div');
+text_inputs_container.classList.add('text-inputs-container');
 
-const first_name_input = createElement('input', {
-    properties: {
-        required: true,
-        type: 'text',
-        placeholder: text.first_name_input,
-    },
-});
+const first_name_input = document.createElement('input');
+first_name_input.required = true;
+first_name_input.type = 'text';
+first_name_input.placeholder = text.first_name_input;
 
-const last_name_input = createElement('input', {
-    properties: {
-        required: true,
-        type: 'text',
-        placeholder: text.last_name_input,
-    },
-});
+const last_name_input = document.createElement('input');
+last_name_input.required = true;
+last_name_input.type = 'text';
+last_name_input.placeholder = text.last_name_input;
 
-const display_name_input = createElement('input', {
-    properties: {
-        required: true,
-        type: 'text',
-        placeholder: text.display_name_input,
-    },
-});
+const display_name_input = document.createElement('input');
+display_name_input.required = true;
+display_name_input.type = 'text';
+display_name_input.placeholder = text.display_name_input;
 
-const email_input = createElement('input', {
-    properties: {
-        required: true,
-        type: 'email',
-        placeholder: text.email_input,
-    },
-});
+const email_input = document.createElement('input');
+email_input.required = true;
+email_input.type = 'email';
+email_input.placeholder = text.email_input;
 
-const password_input = createElement('input', {
-    properties: {
-        required: true,
-        type: 'password',
-        placeholder: text.password_input,
-    },
-});
+const password_input = document.createElement('input');
+password_input.required = true;
+password_input.type = 'password';
+password_input.placeholder = text.password_input;
 
-const confirm_password_input = createElement('input', {
-    properties: {
-        required: true,
-        type: 'password',
-        placeholder: text.confirm_password_input,
-    },
-});
+const confirm_password_input = document.createElement('input');
+confirm_password_input.required = true;
+confirm_password_input.type = 'password';
+confirm_password_input.placeholder = text.confirm_password_input;
 
 text_inputs_container.append(
     first_name_input,
@@ -104,46 +76,42 @@ text_inputs_container.append(
     confirm_password_input
 );
 
-const radio_inputs_container = createElement('div', {
-    classes: ['radio-inputs-container'],
-});
+const radio_inputs_container = document.createElement('div');
+radio_inputs_container.classList.add('radio-inputs-container');
 
-const radio_input_group1 = createElement('div', {
-    classes: ['radio-input-group'],
-});
-const radio_input_group2 = createElement('div', {
-    classes: ['radio-input-group'],
-});
+const radio_input_group1 = document.createElement('div');
+const radio_input_group2 = document.createElement('div');
+radio_input_group1.classList.add('radio-input-group');
+radio_input_group2.classList.add('radio-input-group');
 
-const radio_input1 = createElement('input', {
-    properties: {
-        type: 'radio',
-        id: 'buyer',
-        value: 'buyer',
-        name: 'user-type',
-        required: true,
-    },
-});
+const radio_input1 = document.createElement('input');
+radio_input1.type = 'radio';
+radio_input1.id = 'buyer';
+radio_input1.value = 'buyer';
+radio_input1.name = 'user-type';
+radio_input1.required = true;
 
-const radio_input2 = createElement('input', {
-    properties: {
-        type: 'radio',
-        id: 'seller',
-        value: 'seller',
-        name: 'user-type',
-        required: true,
-    },
-});
+const radio_input2 = document.createElement('input');
+radio_input2.type = 'radio';
+radio_input2.id = 'seller';
+radio_input2.value = 'seller';
+radio_input2.name = 'user-type';
+radio_input2.required = true;
 
-const radio_label1 = createElement('label', {attributes: {for: 'buyer'}});
+const radio_label1 = document.createElement('label');
+radio_label1.setAttribute('for', 'buyer');
 
-const radio_label2 = createElement('label', {attributes: {for: 'seller'}});
+const radio_label2 = document.createElement('label');
+radio_label2.setAttribute('for', 'seller');
 
-const buyer = createElement('div', {textContent: text.buyer});
-const seller = createElement('div', {textContent: text.seller});
-
-const buyer_addition = createElement('p', {textContent: text.buyer_addition});
-const seller_addition = createElement('p', {textContent: text.seller_addition});
+const buyer = document.createElement('div');
+buyer.innerText = text.buyer;
+const seller = document.createElement('div');
+seller.innerText = text.seller;
+const buyer_addition = document.createElement('p');
+buyer_addition.innerText = text.buyer_addition;
+const seller_addition = document.createElement('p');
+seller_addition.innerText = text.seller_addition;
 
 radio_label1.append(buyer, buyer_addition);
 radio_label2.append(seller, seller_addition);
@@ -153,30 +121,24 @@ radio_input_group2.append(radio_input2, radio_label2);
 
 radio_inputs_container.append(radio_input_group1, radio_input_group2);
 
-const checkbox_input_group = createElement('div', {
-    classes: ['checkbox-input-group'],
-});
+const checkbox_input_group = document.createElement('div');
+checkbox_input_group.classList.add('checkbox-input-group');
 
-const allow_marketing = createElement('input', {
-    properties: {
-        type: 'checkbox',
-        id: 'allow-marketing',
-        name: 'allow-marketing',
-    },
-});
+const allow_marketing = document.createElement('input');
+allow_marketing.type = 'checkbox';
+allow_marketing.id = 'allow-marketing';
+allow_marketing.name = 'allow-marketing';
 
-const allow_marketing_label = createElement('label', {
-    attributes: {for: 'allow-marketing'},
-    textContent: text.allow_marketing,
-});
+const allow_marketing_label = document.createElement('label');
+allow_marketing_label.setAttribute('for', 'allow-marketing');
+allow_marketing_label.innerText = text.allow_marketing;
 
 checkbox_input_group.append(allow_marketing, allow_marketing_label);
 
-const submit_button = createElement('button', {
-    classes: ['submit-button'],
-    properties: {type: 'submit'},
-    textContent: text.submit_button,
-});
+const submit_button = document.createElement('button');
+submit_button.type = 'submit';
+submit_button.classList.add('submit-button');
+submit_button.innerText = text.submit_button;
 
 form.append(
     header_container,
@@ -185,5 +147,4 @@ form.append(
     checkbox_input_group,
     submit_button
 );
-
 container.appendChild(form);
